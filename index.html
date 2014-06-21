@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Searchable Map Template Demo</title>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content='' name='description' />
+    <meta content='' name='author' />
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class='container'>
+      <div class='row'>
+
+        <div class='col-md-12'>
+          <noscript>
+            <div class='alert alert-info'>
+              <h4>Your JavaScript is disabled</h4>
+              <p>Please enable JavaScript to view the map.</p>
+            </div>
+          </noscript>
+          <div id='map_canvas'></div>
+          <div class='controler'>
+
+            <div class='well'>
+              <h4>
+                Chercher une adresse
+              </h4>
+              <p>
+                <input class='form-control' id='search_address' placeholder='Entrez votre adresse' type='text' />
+              </p>
+
+
+              <div id="filters">
+
+                <h4>
+                  Conditions atmosphériques
+                </h4>
+                <ul class='inputs-list unstyled'>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='atm1' />
+                      <span class='filter-box filter-atm1'></span>
+                      <span class="label-hidden">Normal</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='atm2' />
+                      <span class='filter-box filter-atm2'></span>
+                      <span class="label-hidden">Pluie</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='atm3' />
+                      <span class='filter-box filter-atm3'></span>
+                      <span class="label-hidden">Neige / Grêle</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='atm4' />
+                      <span class='filter-box filter-atm4'></span>
+                      <span class="label-hidden">Brouillard</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='atm5' />
+                      <span class='filter-box filter-atm5'></span>
+                      <span class="label-hidden">Vent fort</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='atm6' />
+                      <span class='filter-box filter-atm6'></span>
+                      <span class="label-hidden">Temps éblouissant</span>
+                    </label>
+                  </li>
+                </ul>
+
+                <h4>
+                  Luminosité
+                </h4>
+                <ul class='inputs-list unstyled'>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='lum1' />
+                      <span class='filter-box filter-lum1'></span>
+                      <span class="label-hidden">Plein jour</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='lum2' />
+                      <span class='filter-box filter-lum2'></span>
+                      <span class="label-hidden">Crépuscule / Aube</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='lum3' />
+                      <span class='filter-box filter-lum3'></span>
+                      <span class="label-hidden">Nuit sans éclairage</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='lum4' />
+                      <span class='filter-box filter-lum4'></span>
+                      <span class="label-hidden">Nuit avec éclairage</span>
+                    </label>
+                  </li>
+                </ul>
+
+                <h4>
+                  Intersection
+                </h4>
+                <ul class='inputs-list unstyled'>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='int1' />
+                      <span class='filter-box filter-int1'></span>
+                      <span class="label-hidden">Ligne droite</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='int2' />
+                      <span class='filter-box filter-int2'></span>
+                      <span class="label-hidden">En X</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='int3' />
+                      <span class='filter-box filter-int3'></span>
+                      <span class="label-hidden">En Y</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='int4' />
+                      <span class='filter-box filter-int4'></span>
+                      <span class="label-hidden">Rond-point</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='int5' />
+                      <span class='filter-box filter-int5'></span>
+                      <span class="label-hidden">Passage à niveau</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='int6' />
+                      <span class='filter-box filter-int6'></span>
+                      <span class="label-hidden">Passage à niveau</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='int7' />
+                      <span class='filter-box filter-int7'></span>
+                      <span class="label-hidden">Passage à niveau</span>
+                    </label>
+                  </li>
+                </ul>
+<!--
+                <h4>
+                  Nombre de véhicules impliqués
+                </h4>
+                <ul class='inputs-list unstyled'>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='nbv1' />
+                      <span class='filter-box filter-nbv1'></span>
+                      Un
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='nbv2' />
+                      <span class='filter-box filter-nbv2'></span>
+                      Deux
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='nbv3' />
+                      <span class='filter-box filter-nbv3'></span>
+                      Trois
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='nbv4' />
+                      <span class='filter-box filter-nbv4'></span>
+                      Trois et plus
+                    </label>
+                  </li>
+                </ul>
+
+                <h4>
+                  Année de naissance :
+                </h4>
+                <ul class='inputs-list unstyled'>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='an1' />
+                      <span class='filter-box filter-blue'></span>
+                      Un
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='an2' />
+                      <span class='filter-box filter-green'></span>
+                      Deux
+                    </label>
+                  </li>
+                </ul>
+
+                <h4>
+                  Sexe :
+                </h4>
+                <ul class='inputs-list unstyled'>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='sex1' />
+                      <span class='filter-box filter-sex1'></span>
+                      Un
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='sex2' />
+                      <span class='filter-box filter-sex2'></span>
+                      Deux
+                    </label>
+                  </li>
+                  <li>
+                    <label class='checkbox inline'>
+                      <input type='checkbox' id='sex3' />
+                      <span class='filter-box filter-sex3'></span>
+                      Deux
+                    </label>
+                  </li>
+                </ul> -->
+
+
+
+              </div>
+
+
+             <!--  <h4>Custom filters and views</h4>
+              <p>Take a look at the <a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples'>wiki</a> to see how to add your own custom filters and views like:</p>
+              <div class='row'>
+                <div class='col-md-6'>
+                  <ul>
+                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-checkboxes'>Checkboxes</a></li>
+                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-radiobuttons'>Radio buttons</a></li>
+                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-drop-down-lists'>Drop down lists</a></li>
+                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-textsearches'>Text searches</a></li>
+                  </ul>
+                </div>
+                <div class='col-md-6'>
+                  <ul>
+                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-sliders'>Sliders</a></li>
+                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-date-sliders'>Date sliders</a></li>
+                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/List-search-results'>Results lists</a></li>
+                  </ul>
+                </div>
+              </div>
+              <br /> -->
+
+
+              <a class='btn btn-primary' id='search' href='#'>
+                <i class='glyphicon glyphicon-search'></i>
+                Recherche
+              </a>
+
+
+              <a class='btn btn-default' id='reset' href='#'>
+                <i class='glyphicon glyphicon-repeat'></i>
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.address.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&v=3.14"></script>
+    <script type="text/javascript" src="js/jquery.geocomplete.min.js"></script>
+    <script type="text/javascript" src="js/maps_lib.js"></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        $(window).resize(function () {
+          var h = $(window).height(),
+            offsetTop = 105; // Calculate the top offset
+
+          $('#map_canvas').css('height', (h - offsetTop));
+        }).resize();
+
+        $(function() {
+          MapsLib.initialize();
+          $("#search_address").geocomplete();
+
+          $(':checkbox').click(function(){
+            MapsLib.doSearch();
+          });
+
+          $(':radio').click(function(){
+            MapsLib.doSearch();
+          });
+
+          $('#search_radius').change(function(){
+            MapsLib.doSearch();
+          });
+
+          $('#search').click(function(){
+            MapsLib.doSearch();
+          });
+
+          $('#find_me').click(function(){
+            MapsLib.findMe();
+            return false;
+          });
+
+          $('#reset').click(function(){
+            $.address.parameter('address','');
+            MapsLib.initialize();
+            return false;
+          });
+
+          $(":text").keydown(function(e){
+              var key =  e.keyCode ? e.keyCode : e.which;
+              if(key == 13) {
+                  $('#search').click();
+                  return false;
+              }
+          });
+        });
+      //]]>
+    </script>
+  </body>
+</html>

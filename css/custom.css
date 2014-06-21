@@ -1,0 +1,98 @@
+a { color: #4B58A6; }
+a:hover { color: #4B58A6; }
+
+#map_canvas img {
+  max-width: none;
+}
+
+.filter-box {
+  height: 60px;
+  width: 55px;
+  display: inline-block;
+  background-image: url('../images/icons.png');
+  background-repeat: none;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+  opac@ity: 1;
+  -webkit-transition: opacity .5s ease-in;
+}
+
+.filter-atm1 { background-position: -361px 0px; }
+.filter-atm2 { background-position: -62px 0; }
+.filter-atm3 { background-position: -120px 0; }
+.filter-atm4 { background-position: -174px 0; }
+.filter-atm5 { background-position: -231px 0; }
+.filter-atm6 { background-position: 56px 0; }
+
+.filter-lum1 { background-position: -358px -77px; }
+.filter-lum2 { background-position: -66px -77px; }
+.filter-lum3 { background-position: -136px -77px; }
+.filter-lum4 { background-position: -188px -77px; }
+
+.filter-int1 { background-position: -358px -144px; }
+.filter-int2 { background-position: -48px -144px; }
+.filter-int3 { background-position: -98px -144px; }
+.filter-int4 { background-position: -142px -144px; }
+.filter-int5 { background-position: -188px -144px; }
+.filter-int6 { background-position: -230px -144px; }
+.filter-int7 { background-position: -275px -154px; }
+
+
+.filter-lum1 { background-position: -358px -77px; }
+
+
+canvas {-ms-touch-action: double-tap-zoom;}
+
+/** FIX for Bootstrap and Google Maps Info window styes problem **/
+img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+max-width: none;
+}
+
+.container {
+  position: relative;
+}
+
+.checkbox {
+  padding-left: 0;
+}
+
+.controler {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  margin-right: 15px;
+  padding: 0 5px;
+}
+
+.alert {
+  margin-top: 10px;
+}
+
+.inputs-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+.inputs-list li {
+  display: inline-block;
+}
+
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.active {
+  opacity: 0.3;
+  -webkit-transition: opacity .5s ease-in;
+}
+
+.label-hidden {
+  display: none;
+}
