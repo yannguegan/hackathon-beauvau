@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <title>Searchable Map Template Demo</title>
+    <title>Les accidents de la route en 2013</title>
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content='' name='description' />
     <meta content='' name='author' />
     <!-- Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/tooltipster.css"/>
+    <link rel="stylesheet" href="css/custom.css?v=1.111111"/>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
-
+    <h1>Les accidents de la route en France métropolitaine en 2012</h1>
     <div class='container'>
       <div class='row'>
 
@@ -30,264 +31,13 @@
           <div class='controler'>
 
             <div class='well'>
-              <h4>
-                Chercher une adresse
-              </h4>
-              <p>
-                <input class='form-control' id='search_address' placeholder='Entrez votre adresse' type='text' />
+
+              <p >
+                <input  class='form-control' id='search_address' placeholder='Entrez une adresse' type='text' />
               </p>
-
-
-              <div id="filters">
-
-                <h4>
-                  Conditions atmosphériques
-                </h4>
-                <ul class='inputs-list unstyled'>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='atm1' />
-                      <span class='filter-box filter-atm1'></span>
-                      <span class="label-hidden">Normal</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='atm2' />
-                      <span class='filter-box filter-atm2'></span>
-                      <span class="label-hidden">Pluie</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='atm3' />
-                      <span class='filter-box filter-atm3'></span>
-                      <span class="label-hidden">Neige / Grêle</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='atm4' />
-                      <span class='filter-box filter-atm4'></span>
-                      <span class="label-hidden">Brouillard</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='atm5' />
-                      <span class='filter-box filter-atm5'></span>
-                      <span class="label-hidden">Vent fort</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='atm6' />
-                      <span class='filter-box filter-atm6'></span>
-                      <span class="label-hidden">Temps éblouissant</span>
-                    </label>
-                  </li>
-                </ul>
-
-                <h4>
-                  Luminosité
-                </h4>
-                <ul class='inputs-list unstyled'>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='lum1' />
-                      <span class='filter-box filter-lum1'></span>
-                      <span class="label-hidden">Plein jour</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='lum2' />
-                      <span class='filter-box filter-lum2'></span>
-                      <span class="label-hidden">Crépuscule / Aube</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='lum3' />
-                      <span class='filter-box filter-lum3'></span>
-                      <span class="label-hidden">Nuit sans éclairage</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='lum4' />
-                      <span class='filter-box filter-lum4'></span>
-                      <span class="label-hidden">Nuit avec éclairage</span>
-                    </label>
-                  </li>
-                </ul>
-
-                <h4>
-                  Intersection
-                </h4>
-                <ul class='inputs-list unstyled'>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='int1' />
-                      <span class='filter-box filter-int1'></span>
-                      <span class="label-hidden">Ligne droite</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='int2' />
-                      <span class='filter-box filter-int2'></span>
-                      <span class="label-hidden">En X</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='int3' />
-                      <span class='filter-box filter-int3'></span>
-                      <span class="label-hidden">En Y</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='int4' />
-                      <span class='filter-box filter-int4'></span>
-                      <span class="label-hidden">Rond-point</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='int5' />
-                      <span class='filter-box filter-int5'></span>
-                      <span class="label-hidden">Passage à niveau</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='int6' />
-                      <span class='filter-box filter-int6'></span>
-                      <span class="label-hidden">Passage à niveau</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='int7' />
-                      <span class='filter-box filter-int7'></span>
-                      <span class="label-hidden">Passage à niveau</span>
-                    </label>
-                  </li>
-                </ul>
-<!--
-                <h4>
-                  Nombre de véhicules impliqués
-                </h4>
-                <ul class='inputs-list unstyled'>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='nbv1' />
-                      <span class='filter-box filter-nbv1'></span>
-                      Un
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='nbv2' />
-                      <span class='filter-box filter-nbv2'></span>
-                      Deux
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='nbv3' />
-                      <span class='filter-box filter-nbv3'></span>
-                      Trois
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='nbv4' />
-                      <span class='filter-box filter-nbv4'></span>
-                      Trois et plus
-                    </label>
-                  </li>
-                </ul>
-
-                <h4>
-                  Année de naissance :
-                </h4>
-                <ul class='inputs-list unstyled'>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='an1' />
-                      <span class='filter-box filter-blue'></span>
-                      Un
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='an2' />
-                      <span class='filter-box filter-green'></span>
-                      Deux
-                    </label>
-                  </li>
-                </ul>
-
-                <h4>
-                  Sexe :
-                </h4>
-                <ul class='inputs-list unstyled'>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='sex1' />
-                      <span class='filter-box filter-sex1'></span>
-                      Un
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='sex2' />
-                      <span class='filter-box filter-sex2'></span>
-                      Deux
-                    </label>
-                  </li>
-                  <li>
-                    <label class='checkbox inline'>
-                      <input type='checkbox' id='sex3' />
-                      <span class='filter-box filter-sex3'></span>
-                      Deux
-                    </label>
-                  </li>
-                </ul> -->
-
-
-
-              </div>
-
-
-             <!--  <h4>Custom filters and views</h4>
-              <p>Take a look at the <a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples'>wiki</a> to see how to add your own custom filters and views like:</p>
-              <div class='row'>
-                <div class='col-md-6'>
-                  <ul>
-                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-checkboxes'>Checkboxes</a></li>
-                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-radiobuttons'>Radio buttons</a></li>
-                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-drop-down-lists'>Drop down lists</a></li>
-                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-textsearches'>Text searches</a></li>
-                  </ul>
-                </div>
-                <div class='col-md-6'>
-                  <ul>
-                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-sliders'>Sliders</a></li>
-                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-date-sliders'>Date sliders</a></li>
-                    <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/List-search-results'>Results lists</a></li>
-                  </ul>
-                </div>
-              </div>
-              <br /> -->
-
-
               <a class='btn btn-primary' id='search' href='#'>
                 <i class='glyphicon glyphicon-search'></i>
-                Recherche
+                
               </a>
 
 
@@ -295,12 +45,486 @@
                 <i class='glyphicon glyphicon-repeat'></i>
               </a>
 
+              <div id="filters">
+                <div id="accordion">
+                  <h3 >
+                   Conditions météo
+                 </h3>
+                 <div>
+                   <ul class='inputs-list unstyled '>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='atm-tout' checked />
+                         <span class='filter-box filter-atm-tout active'></span>
+                         <span class="label-hidden">Tout</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='atm1'  />
+                         <span class='tooltip filter-box filter-atm1' title="Conditions normales"></span>
+                         <span class="label-hidden">Normales</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='atm2' />
+                         <span class='tooltip filter-box filter-atm2' title="Pluie"></span>
+                         <span class="label-hidden">Pluie</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='atm3' />
+                         <span class='tooltip filter-box filter-atm3' title="Neige ou grêle"></span>
+                         <span class="label-hidden">Neige / grêle</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='atm4' />
+                         <span class='tooltip filter-box filter-atm4' title="Brouillard ou fumée"></span>
+                         <span class="label-hidden">Brouillard</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='atm5' />
+                         <span class='tooltip filter-box filter-atm5' title="Vent fort"></span>
+                         <span class="label-hidden">Vent fort</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='atm6' />
+                         <span class='tooltip filter-box filter-atm6' title="Temps éblouissant"></span>
+                         <span class="label-hidden">Eblouissant</span>
+                       </label>
+                     </li>
+                   </ul>
+                 </div>
+                 <h3>
+                  Luminosité
+                </h3>
+                <div>
+                  
+                   <ul class='inputs-list unstyled '>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='lum-tout' checked />
+                         <span class='filter-box filter-lum-tout active'></span>
+                         <span class="label-hidden">Tout</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='lum1'  />
+                         <span class='tooltip filter-box filter-lum1' title="Plein jour"></span>
+                         <span class="label-hidden">Plein jour</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='lum2' />
+                         <span class='tooltip filter-box filter-lum2' title="Lever ou coucher du soleil"></span>
+                         <span class="label-hidden">Lever ou coucher du soleil</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='lum3' />
+                         <span class='tooltip filter-box filter-lum3' title="Nuit"></span>
+                         <span class="label-hidden">Nuit</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='lum4' />
+                         <span class='tooltip filter-box filter-lum4' title="Nuit avec éclairage public"></span>
+                         <span class="label-hidden">Nuit avec éclairage</span>
+                       </label>
+                     </li>
+                   </ul>
+
+                </div>
+                <h3>
+                  Intersection
+                </h3>
+                <ul class='inputs-list unstyled '>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='int-tout' checked />
+                         <span class='filter-box filter-int-tout active'></span>
+                         <span class="label-hidden">Tout</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='int1'  />
+                         <span class='tooltip filter-box filter-int1' title="Aucune intersection"></span>
+                         <span class="label-hidden">En X</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='int2'  />
+                         <span class='tooltip filter-box filter-int2' title="En X"></span>
+                         <span class="label-hidden">En X</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='int3' />
+                         <span class='tooltip filter-box filter-int3' title="En T"></span>
+                         <span class="label-hidden">En T</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='int4' />
+                         <span class='tooltip filter-box filter-int4' title="En Y"></span>
+                         <span class="label-hidden">En Y</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='int5' />
+                         <span class='tooltip filter-box filter-int5' title="Rond-point"></span>
+                         <span class="label-hidden">Rond-point</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='int6' />
+                         <span class='tooltip filter-box filter-int6' title="Passage à niveau"></span>
+                         <span class="label-hidden">Passage à niveau</span>
+                       </label>
+                     </li>
+                   </ul>
+                    <h3>
+                  Nombre de véhicules
+                </h3>
+                <ul class='inputs-list unstyled '>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='nbv-tout' checked />
+                         <span class='filter-box filter-nbv-tout active'></span>
+                         <span class="label-hidden">Tout</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='nbv1'  />
+                         <span class='tooltip filter-box filter-nbv1' title="Un véhicule"></span>
+                         <span class="label-hidden">Un véhicule</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='nbv2'  />
+                         <span class='tooltip filter-box filter-nbv2' title="Deux véhicules"></span>
+                         <span class="label-hidden">En X</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='nbv3' />
+                         <span class='tooltip filter-box filter-nbv3' title="Trois véhicules"></span>
+                         <span class="label-hidden">En T</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='nbv4' />
+                         <span class='tooltip filter-box filter-nbv4' title="Plus de trois véhicules"></span>
+                         <span class="label-hidden">En Y</span>
+                       </label>
+                     </li>
+                   </ul>
+                   <h3>
+                  Sexe des blessés
+                   </h3>
+                   <ul class='inputs-list unstyled '>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='sex-tout' checked />
+                         <span class='filter-box filter-sex-tout active'></span>
+                         <span class="label-hidden">Tout</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='sex1'  />
+                         <span class='tooltip filter-box filter-sex1' title="Uniquement des hommes"></span>
+                         <span class="label-hidden">Uniquement des hommes</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='sex2'  />
+                         <span class='tooltip filter-box filter-sex2' title="Uniquement des femmes"></span>
+                         <span class="label-hidden">Uniquement des femmes</span>
+                       </label>
+                     </li>
+                  </ul>
+                  <h3 >
+                   Gravité
+                 </h3>
+                 <div>
+                   <ul class='inputs-list unstyled'>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='grv-tout' checked />
+                         <span class='filter-grv-tout active'></span>
+                         <span class="label label-actif">Tout</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='grv1'  />
+                         <span class='tooltip filter-grv1' ></span>
+                         <span class="label tooltip" title="Pas de blessés hospitalisés après l'accident">Blessé(s) léger(s)</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='grv2' />
+                         <span class='tooltip filter-grv2' ></span>
+                         <span class="label tooltip" title="Des blessés hospitalisés après l'accident">Hospitalisé(s)</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='grv3' />
+                         <span class='tooltip filter-grv3' ></span>
+                         <span class="label tooltip" title="Des morts">Tué(s)</span>
+                       </label>
+                     </li>
+                   </ul>
+                  </div>
+                  <h3>
+                    Age des victimes
+                  </h3>
+                  <div>
+                    <ul class='inputs-list unstyled'>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='age-tout' checked />
+                         <span class='filter-age-tout active'></span>
+                         <span class="label label-actif">Tout</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='age1'  />
+                         <span class='tooltip filter-age1' ></span>
+                         <span class="label tooltip" title="Au moins une victime de moins de 20 ans">0-20</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='age2' />
+                         <span class='tooltip filter-age2' ></span>
+                         <span class="label tooltip" title="Au moins une victime entre 20 et 40 ans">20-40</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='age3' />
+                         <span class='tooltip filter-age3'> </span>
+                         <span class="label tooltip" title="Au moins une victime entre 40 et 60 ans">40-60</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='age4' />
+                         <span class='tooltip filter-age4' ></span>
+                         <span class="label tooltip" title="Au moins une victime entre 60 et 80 ans">60-80</span>
+                       </label>
+                     </li>
+                     <li>
+                       <label class='radio inline'>
+                         <input type='radio' name='types' id='age5' />
+                         <span class='tooltip filter-age5' ></span>
+                         <span class="label tooltip" title="Au moins une victime de plus de 80 ans">Plus de 80</span>
+                       </label>
+                     </li>
+                   </ul>
+                 </div>
+                 <h3>
+                  Jour de la semaine
+                 </h3>
+                <div>
+                  <ul class='inputs-list unstyled'>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='semaine-tout' checked />
+                       <span class='filter-semaine-tout active'></span>
+                       <span class="label label-actif">Tout</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='sem1'  />
+                       <span class='tooltip filter-sem1' ></span>
+                       <span class="label tooltip" title="Accidents qui se sont passés un lundi">Lun</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='sem2' />
+                       <span class='tooltip filter-sem2' ></span>
+                       <span class="label tooltip" title="Accidents qui se sont passés un mardi">Mar</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='sem3' />
+                       <span class='tooltip filter-sem3'> </span>
+                       <span class="label tooltip" title="Accidents qui se sont passés un mercredi">Mer</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='sem4' />
+                       <span class='tooltip filter-sem4' ></span>
+                       <span class="label tooltip" title="Accidents qui se sont passés un jeudi">Jeu</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='sem5' />
+                       <span class='tooltip filter-sem5' ></span>
+                       <span class="label tooltip" title="Accidents qui se sont passés un vendredi">Ven</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='sem6' />
+                       <span class='tooltip filter-sem6' ></span>
+                       <span class="label tooltip" title="Accidents qui se sont passés un samedi">Sam</span>
+                     </label>
+                   </li>
+                    <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='sem7' />
+                       <span class='tooltip filter-sem7' ></span>
+                       <span class="label tooltip" title="Accidents qui se sont passés un dimanche">Dim</span>
+                     </label>
+                   </li>
+                 </ul>
+               </div>
+                 <h3>
+                  Mois de l'année
+                 </h3>
+                <div>
+                  <ul class='inputs-list unstyled'>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois-tout' checked />
+                       <span class='filter-mois-tout active'></span>
+                       <span class="label label-actif">Tout</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois1'  />
+                       <span class='tooltip filter-mois1' ></span>
+                       <span class="label tooltip" title="Accidents en janvier">1</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois2' />
+                       <span class='tooltip filter-mois2' ></span>
+                       <span class="label tooltip" title="Accidents en février">2</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois3' />
+                       <span class='tooltip filter-mois3'> </span>
+                       <span class="label tooltip" title="Accidents en mars">3</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois4' />
+                       <span class='tooltip filter-mois4' ></span>
+                       <span class="label tooltip" title="Accidents en avril">4</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois5' />
+                       <span class='tooltip filter-mois5' ></span>
+                       <span class="label tooltip" title="Accidents en mai">5</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois6' />
+                       <span class='tooltip filter-mois6' ></span>
+                       <span class="label tooltip" title="Accidents en juin">6</span>
+                     </label>
+                   </li>
+                  <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois7' />
+                       <span class='tooltip filter-mois7' ></span>
+                       <span class="label tooltip" title="Accidents en juillet">7</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                      <input type='radio' name='types' id='mois8' />
+                       <span class='tooltip filter-mois8' ></span>
+                       <span class="label tooltip" title="Accidents en août">8</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois9' />
+                       <span class='tooltip filter-mois9' ></span>
+                       <span class="label tooltip" title="Accidents en septembre">9</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois10' />
+                       <span class='tooltip filter-mois10' ></span>
+                       <span class="label tooltip" title="Accidents en octobre">10</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois11' />
+                       <span class='tooltip filter-mois12' ></span>
+                       <span class="label tooltip" title="Accidents en novembre">11</span>
+                     </label>
+                   </li>
+                   <li>
+                     <label class='radio inline'>
+                       <input type='radio' name='types' id='mois12' />
+                       <span class='tooltip filter-mois7' ></span>
+                       <span class="label tooltip" title="Accidents en décembre">12</span>
+                     </label>
+                   </li>
+                 </ul>
+               </div>
+             
+                </div>
+              </div>
             </div>
-
           </div>
-
         </div>
       </div>
+
+    <div id="caption">
+    Conception et réalisation : Jean-François Fraysse, Yann Guégan, Camille Polloni et Cyrille Rossant <a href="http://fr.okfn.org/2014/05/29/premier-hackaton-sur-les-donnees-du-ministere-de-linterieur/" target="_blank">lors d'un hackathon OKF France-Ministère de l'Intérieur-Etalab-Octo</a><br />
+    Données : ministère de l'Intérieur  : <a href="http://www.data.gouv.fr/" target="_blank">jeu originel</A>, version <a href="https://www.google.com/fusiontables/data?docid=1_cjDlhCjlChCq-dhJpZvum6-69Lt7HSXiffX7ey3#rows:id=1" target="_blank">Google Fusion Table</a>, version <a href="data_ok_v2.csv">CSV</a>  | 
+    Icônes : Pypaertv/CC-BY-SA, Weather & Time | 
+    <a href="http://www.rue89.com/contact" target="_parent">Une erreur ? Un ajout ?</a>
     </div>
 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -308,7 +532,22 @@
     <script type="text/javascript" src="js/jquery.address.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&v=3.14"></script>
     <script type="text/javascript" src="js/jquery.geocomplete.min.js"></script>
-    <script type="text/javascript" src="js/maps_lib.js"></script>
+    <script type="text/javascript" src="js/maps_lib.js?v=1.5"></script>
+    <script type="text/javascript" src="js/jquery.tooltipster.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+
+    <script>
+    $(document).ready(function() {
+     $('.tooltip').tooltipster();
+    });
+    </script>
+    <script>
+    $(function() {
+      $("#accordion").accordion();
+    });
+    </script>
+
+
     <script type='text/javascript'>
       //<![CDATA[
         $(window).resize(function () {

@@ -21,11 +21,11 @@ var MapsLib = {
 
   //the encrypted Table ID of your Fusion Table (found under File => About)
   //NOTE: numeric IDs will be depricated soon
-  fusionTableId:      "1DNhZumr1MfB6suD2nzJk77RNyuWYH2cualCUuHfe",
+   fusionTableId:      "1_cjDlhCjlChCq-dhJpZvum6-69Lt7HSXiffX7ey3",
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
-  googleApiKey:       "AIzaSyATYmkCXslyubrTmuhoPZQ2mBhwgqnwZX0",
+  googleApiKey:       "AIzaSyCu-4tqDub2xbizS9Lb3NetQ7hiN3WDths",
 
   //name of the location column in your Fusion Table.
   //NOTE: if your location column name has spaces in it, surround it with single quotes
@@ -37,12 +37,15 @@ var MapsLib = {
   recordName:         "result",       //for showing number of results
   recordNamePlural:   "results",
 
-  searchRadius:       805,            //in meters ~ 1/2 mile
-  defaultZoom:        11,             //zoom level when map is loaded (bigger is more zoomed in)
+  searchRadius:       100000000,            //in meters ~ 1/2 mile
+  defaultZoom:        7,             //zoom level when map is loaded (bigger is more zoomed in)
   addrMarkerImage:    'images/blue-pushpin.png',
   currentPinpoint:    null,
 
   initialize: function() {
+
+
+
     $( "#result_count" ).html("");
 
     geocoder = new google.maps.Geocoder();
@@ -74,17 +77,23 @@ var MapsLib = {
 
     //-----custom initializers-------
 
+
     //-----end of custom initializers-------
 
     //run the default search
     MapsLib.doSearch();
 
     $('.filter-box').click(function() {
-      $(this).toggleClass('active');
+		$('.filter-box').removeClass('active');      
+		$(this).addClass('active');
     });
-
-
-
+    $("#accordion h3").click(function() {
+    $(this).blur();
+    });
+    $('.radio .label').click(function() {
+    $('.radio .label').removeClass('label-actif');      
+    $(this).addClass('label-actif');
+    });
   },
 
   doSearch: function(location) {
@@ -96,49 +105,83 @@ var MapsLib = {
 
     //-----custom filters-------
 
-    var type_column_atm = "'atm'";
-    var searchType_atm = type_column_atm + " IN (-1,";
-    if ( $("#atm1").is(':checked')) searchType_atm += "1,";
-    if ( $("#atm2").is(':checked')) searchType_atm += "2,";
-    if ( $("#atm3").is(':checked')) searchType_atm += "3,";
-    if ( $("#atm4").is(':checked')) searchType_atm += "4,";
-    if ( $("#atm5").is(':checked')) searchType_atm += "5,";
-    if ( $("#atm6").is(':checked')) searchType_atm += "6,";
-    whereClause += " AND " + searchType_atm.slice(0, searchType_atm.length - 1) + ")";
 
-    var type_column_lum = "'lum'";
-    var searchType_lum = type_column_lum + " IN (-1,";
-    if ( $("#lum1").is(':checked')) searchType_lum += "1,";
-    if ( $("#lum2").is(':checked')) searchType_lum += "2, 3";
-    if ( $("#lum3").is(':checked')) searchType_lum += "4,";
-    if ( $("#lum4").is(':checked')) searchType_lum += "5,";
-    whereClause += " AND " + searchType_lum.slice(0, searchType_lum.length - 1) + ")";
+	var type_column_atm = "'atm'";
+	if ( $("#atm-tout").is(':checked')) whereClause += " AND " + type_column_atm + " IN('1','2','3','4','5','6','7')";
+	if ( $("#atm1").is(':checked')) whereClause += " AND " + type_column_atm + "=1";
+	if ( $("#atm2").is(':checked')) whereClause += " AND " + type_column_atm + " IN('2','3')";
+	if ( $("#atm3").is(':checked')) whereClause += " AND " + type_column_atm + "=4";	
+	if ( $("#atm4").is(':checked')) whereClause += " AND " + type_column_atm + "=5";
+	if ( $("#atm5").is(':checked')) whereClause += " AND " + type_column_atm + "=6";
+	if ( $("#atm6").is(':checked')) whereClause += " AND " + type_column_atm + "=7";
+
+  var type_column_lum = "'lum'";
+  if ( $("#lum-tout").is(':checked')) whereClause += " AND " + type_column_lum + " IN('1','2','3','4','5')";
+  if ( $("#lum1").is(':checked')) whereClause += " AND " + type_column_lum + "=1";
+  if ( $("#lum2").is(':checked')) whereClause += " AND " + type_column_lum + "=2";
+  if ( $("#lum3").is(':checked')) whereClause += " AND " + type_column_lum + " IN('3','4')";
+  if ( $("#lum4").is(':checked')) whereClause += " AND " + type_column_lum + "=5";
+
+  var type_column_int = "'int'";
+  if ( $("#int-tout").is(':checked')) whereClause += " AND " + type_column_int + " IN('1','2','3','4','5','6','7','8','9')";
+  if ( $("#int1").is(':checked')) whereClause += " AND " + type_column_int + "=1";
+  if ( $("#int2").is(':checked')) whereClause += " AND " + type_column_int + "=2";
+  if ( $("#int3").is(':checked')) whereClause += " AND " + type_column_int + "=3";
+  if ( $("#int4").is(':checked')) whereClause += " AND " + type_column_int + "=4";
+  if ( $("#int5").is(':checked')) whereClause += " AND " + type_column_int + "=6";
+  if ( $("#int6").is(':checked')) whereClause += " AND " + type_column_int + "=8";
+
+  var type_column_nbv = "'nbv'";
+  if ( $("#nbv-tout").is(':checked')) whereClause += " AND " + type_column_nbv + ">=0";
+  if ( $("#nbv1").is(':checked')) whereClause += " AND " + type_column_nbv + "=1";
+  if ( $("#nbv2").is(':checked')) whereClause += " AND " + type_column_nbv + "=2";
+  if ( $("#nbv3").is(':checked')) whereClause += " AND " + type_column_nbv + "=3";
+  if ( $("#nbv4").is(':checked')) whereClause += " AND " + type_column_nbv + ">3";
+
+  var type_column_sex = "'sex'";
+  if ( $("#int-tout").is(':checked')) whereClause += " AND " + type_column_int + " IN('0','1','2')";
+  if ( $("#sex1").is(':checked')) whereClause += " AND " + type_column_sex + "=1";
+  if ( $("#sex2").is(':checked')) whereClause += " AND " + type_column_sex + "=2";
 
 
-    var type_column_int = "'int'";
-    var searchType_int = type_column_int + " IN (-1,";
-    if ( $("#int1").is(':checked')) searchType_int += "1,";
-    if ( $("#int2").is(':checked')) searchType_int += "2,";
-    if ( $("#int3").is(':checked')) searchType_int += "3,";
-    if ( $("#int4").is(':checked')) searchType_int += "4,";
-    if ( $("#int5").is(':checked')) searchType_int += "6,";
-    if ( $("#int6").is(':checked')) searchType_int += "8,";
-    if ( $("#int7").is(':checked')) searchType_int += "5, 7, 9,";
-    whereClause += " AND " + searchType_int.slice(0, searchType_int.length - 1) + ")";
+  var type_column_grv = "'gravite'";
+  if ( $("#grv-tout").is(':checked')) whereClause += " AND " + type_column_grv + " IN('0','1','2')";
+  if ( $("#grv1").is(':checked')) whereClause += " AND " + type_column_grv + "=0";
+  if ( $("#grv2").is(':checked')) whereClause += " AND " + type_column_grv + "=1";
+  if ( $("#grv3").is(':checked')) whereClause += " AND " + type_column_grv + "=2";
 
-    // var type_column_nbv = "'nbv'";
-    // var searchType_nbv = type_column_nbv + " IN (-1,";
-    // if ( $("#nbv1").is(':checked')) searchType_nbv += "1,";
-    // if ( $("#nbv2").is(':checked')) searchType_nbv += "2,";
-    // if ( $("#nbv3").is(':checked')) searchType_nbv += "3,";
-    // if ( $("#nbv4").is(':checked')) searchType_nbv += "4,";
-    // whereClause += " AND " + searchType_nbv.slice(0, searchType_nbv.length - 1) + ")";
+  var type_column_age_0 = "'age_0'";
+  if ( $("#age-tout").is(':checked')) whereClause += " AND " + type_column_age_0 + ">=0";
+  if ( $("#age5").is(':checked')) whereClause += " AND " + type_column_age_0 + ">=1";
 
-    // var type_column_sex = "'sex'";
-    // var searchType_sex = type_column_sex + " IN (-1,";
-    // if ( $("#sex1").is(':checked')) searchType_sex += "0,";
-    // if ( $("#sex2").is(':checked')) searchType_sex += "1,";
-    // if ( $("#sex3").is(':checked')) searchType_sex += "2,";
+  var type_column_age_1 = "'age_1'";
+  if ( $("#age4").is(':checked')) whereClause += " AND " + type_column_age_1 + ">=1";
+
+  var type_column_age_2 = "'age_2'";
+  if ( $("#age3").is(':checked')) whereClause += " AND " + type_column_age_2 + ">=1";
+
+  var type_column_age_3 = "'age_3'";
+  if ( $("#age2").is(':checked')) whereClause += " AND " + type_column_age_3 + ">=1";
+
+  var type_column_age_4 = "'age_4'";
+  if ( $("#age1").is(':checked')) whereClause += " AND " + type_column_age_4 + ">=1";
+
+  var type_column_sem = "'dayofweek'";
+  if ( $("#sem-tout").is(':checked')) whereClause += " AND " + type_column_sem + ">=0";
+  if ( $("#sem1").is(':checked')) whereClause += " AND " + type_column_sem + "=0";
+  if ( $("#sem2").is(':checked')) whereClause += " AND " + type_column_sem + "=1";
+  if ( $("#sem3").is(':checked')) whereClause += " AND " + type_column_sem + "=2";
+  if ( $("#sem4").is(':checked')) whereClause += " AND " + type_column_sem + "=3";
+  if ( $("#sem5").is(':checked')) whereClause += " AND " + type_column_sem + "=4";
+  if ( $("#sem6").is(':checked')) whereClause += " AND " + type_column_sem + "=5";
+  if ( $("#sem7").is(':checked')) whereClause += " AND " + type_column_sem + "=6";
+
+
+
+
+
+
+
     // whereClause += " AND " + searchType_sex.slice(0, searchType_sex.length - 1) + ")";
 
 
@@ -157,19 +200,21 @@ var MapsLib = {
           map.setCenter(MapsLib.currentPinpoint);
 
           // set zoom level based on search radius
-          if (MapsLib.searchRadius      >= 1610000) map.setZoom(04); // 1,000 miles
-          else if (MapsLib.searchRadius >= 805000)  map.setZoom(05); // 500 miles
-          else if (MapsLib.searchRadius >= 402500)  map.setZoom(06); // 250 miles
-          else if (MapsLib.searchRadius >= 161000)  map.setZoom(07); // 100 miles
-          else if (MapsLib.searchRadius >= 80500)   map.setZoom(08); // 50 miles
-          else if (MapsLib.searchRadius >= 40250)   map.setZoom(09); // 25 miles
-          else if (MapsLib.searchRadius >= 16100)   map.setZoom(11); // 10 miles
-          else if (MapsLib.searchRadius >= 8050)    map.setZoom(12); // 5 miles
-          else if (MapsLib.searchRadius >= 3220)    map.setZoom(13); // 2 miles
-          else if (MapsLib.searchRadius >= 1610)    map.setZoom(14); // 1 mile
-          else if (MapsLib.searchRadius >= 805)     map.setZoom(15); // 1/2 mile
-          else if (MapsLib.searchRadius >= 400)     map.setZoom(16); // 1/4 mile
-          else                                      map.setZoom(17);
+          map.setZoom(10);
+
+          // if (MapsLib.searchRadius      >= 1610000) map.setZoom(05); // 1,000 miles
+          // else if (MapsLib.searchRadius >= 805000)  map.setZoom(05); // 500 miles
+          // else if (MapsLib.searchRadius >= 402500)  map.setZoom(06); // 250 miles
+          // else if (MapsLib.searchRadius >= 161000)  map.setZoom(07); // 100 miles
+          // else if (MapsLib.searchRadius >= 80500)   map.setZoom(08); // 50 miles
+          // else if (MapsLib.searchRadius >= 40250)   map.setZoom(09); // 25 miles
+          // else if (MapsLib.searchRadius >= 16100)   map.setZoom(11); // 10 miles
+          // else if (MapsLib.searchRadius >= 8050)    map.setZoom(12); // 5 miles
+          // else if (MapsLib.searchRadius >= 3220)    map.setZoom(13); // 2 miles
+          // else if (MapsLib.searchRadius >= 1610)    map.setZoom(14); // 1 mile
+          // else if (MapsLib.searchRadius >= 805)     map.setZoom(15); // 1/2 mile
+          // else if (MapsLib.searchRadius >= 400)     map.setZoom(16); // 1/4 mile
+          // else                                      map.setZoom(17);
 
           MapsLib.addrMarker = new google.maps.Marker({
             position: MapsLib.currentPinpoint,
@@ -185,7 +230,7 @@ var MapsLib = {
           MapsLib.submitSearch(whereClause, map, MapsLib.currentPinpoint);
         }
         else {
-          alert("We could not find your address: " + status);
+          alert("Nous n'avons pas trouvé cette adresse: " + status);
         }
       });
     }
